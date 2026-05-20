@@ -657,7 +657,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col selection:bg-primary selection:text-white overflow-x-hidden">
 
       {/* ── N7 Brutal Slab nav ── */}
-      <nav className="sticky top-0 z-50 bg-surface border-b-2 border-on-surface">
+      <nav className="fixed top-0 inset-x-0 z-50 bg-surface border-b-2 border-on-surface">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-6">
 
           {/* Wordmark */}
@@ -744,7 +744,7 @@ export default function App() {
       </nav>
 
       {/* ── Main content ── */}
-      <main className="flex-grow">
+      <main className="flex-grow pt-14">
         {activeTab === "Kapcsolat" ? (
           <ContactView />
         ) : activeTab === "Rólunk" ? (
