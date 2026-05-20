@@ -394,32 +394,32 @@ const AboutView = () => (
             Pinocchio
           </h2>
           <p className="text-2xl font-bold text-on-surface leading-snug">
-            Vannak helyek, amelyek csupán éttermek. És vannak helyek, amelyek történetekből születnek.
+            A Pinocchio egy családi étterem Baja szívében — olasz receptekkel, bajai gyökerekkel.
           </p>
         </div>
 
         <div className="space-y-6 text-lg text-on-surface-variant leading-relaxed font-medium">
           <p>
-            A Pinocchio egy ilyen hely. Egy család vagyunk akiket az olasz konyha iránti szenvedély kötött össze, még mielőtt tudtuk volna, hogy egyszer közösen álmodunk majd éttermet.
+            Az olasz konyha szeretete nálunk nem marketingszöveg. Évek óta ugyanazokat az alapanyagokat használjuk, ugyanúgy nyújtjuk a tésztát, és ugyanolyan büszkék vagyunk arra, ami az asztalra kerül.
           </p>
           <p>
-            Az évek során megtanultuk, hogy az igazi olasz kézműves konyha titka nem csupán a recept — hanem a figyelem, a türelem és az a megmagyarázhatatlan többlet, amelyet csak akkor ad az ember, ha igazán szívügyének tekinti a munkáját.
+            Nem egy nagy lánc vagyunk, és nem is szeretnénk az lenni. Minden nap személyesen vagyunk itt — a konyhában és a teremben egyaránt.
           </p>
           <div className="p-8 bg-surface-container rounded-3xl border-2 border-dashed border-primary/20 relative">
             <div className="absolute -top-4 left-6 bg-primary text-white px-4 py-1 rounded-full font-mono text-[10px] font-bold uppercase tracking-widest">
-              Hitvallásunk
+              Amit vallunk
             </div>
             <p className="text-on-surface font-bold text-xl mb-4 italic">
-              „Nálunk minden pizza és minden tészta kézzel, gondosan, szívvel és lélekkel készül."
+              „Ha valamit nem csinálnánk meg otthon is jól, nem teszünk ki az étlapra."
             </p>
-            <p className="text-sm">Nem kompromisszumokból, hanem meggyőződésből.</p>
+            <p className="text-sm">Egyszerű szabály, de tartjuk magunkat hozzá.</p>
           </div>
           <p>
-            Hiszünk abban, hogy egy jól elkészített étel több mint táplálék — pillanat, amelyre vissza lehet emlékezni.
+            Ha egyszer betérsz hozzánk, reméljük nem az utolsó alkalom lesz.
           </p>
           <div className="pt-10">
-            <p className="text-primary font-black text-3xl italic mb-2">Köszönjük, hogy betértél hozzánk.</p>
-            <p className="font-mono font-bold uppercase tracking-widest text-xs">Reméljük, hogy nemcsak egyszer.</p>
+            <p className="text-primary font-black text-3xl italic mb-2">Várunk szeretettel.</p>
+            <p className="font-mono font-bold uppercase tracking-widest text-xs">A Pinocchio csapata</p>
           </div>
         </div>
       </div>
