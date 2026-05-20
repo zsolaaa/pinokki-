@@ -139,7 +139,7 @@ const POPULAR_ITEMS = [
     name: "Margherita Pizza",
     description: "Házi paradicsomszósz, bivalymozzarella, friss bazsalikom, extra szűz olívaolaj.",
     price: "2 890 Ft",
-    image: "https://images.unsplash.com/photo-1574071318508-1cdbad80ad38?auto=format&fit=crop&q=80&w=800",
+    image: `${import.meta.env.BASE_URL}images/sajat-pizza.jpg`,
   },
   {
     id: 2,
@@ -153,7 +153,7 @@ const POPULAR_ITEMS = [
     name: "Pesto Tészta",
     description: "Penne tészta, házi bazsalikomos pesto, fenyőmag, parmezán forgács.",
     price: "3 190 Ft",
-    image: "https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&q=80&w=800",
+    image: `${import.meta.env.BASE_URL}images/sajat-teszta.jpg`,
   },
 ];
 
