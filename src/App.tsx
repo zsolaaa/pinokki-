@@ -760,18 +760,6 @@ export default function App() {
         )}
       </main>
 
-      {/* ── C4 Sticky bottom bar — mobile order CTA ── */}
-      {activeTab === "Kezdőlap" && (
-        <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-primary border-t-2 border-primary-container px-4 pt-3 safe-bottom">
-          <a
-            href="tel:+36307556846"
-            className="flex items-center justify-center gap-2 w-full py-3.5 bg-white text-primary font-mono font-black uppercase tracking-[0.12em] text-sm rounded-lg active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-transform duration-[var(--dur-micro)]"
-          >
-            <Phone className="w-4 h-4" aria-hidden />
-            Rendelj most — +36 30 755 6846
-          </a>
-        </div>
-      )}
 
       {/* ── Ft8 Marquee scroll footer ── */}
       <footer>
