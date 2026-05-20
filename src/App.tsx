@@ -547,6 +547,40 @@ const LandingView = ({ setActiveTab, setActiveCategory, setMenuMode }: LandingVi
           </div>
         </button>
 
+        {/* ── Saláta category tile ── */}
+        <button
+          className="bento-salata tile-reveal text-left bg-surface-container rounded-[var(--radius-tile)] p-5 sm:p-6 flex flex-col justify-between group hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary transition-transform duration-[var(--dur-short)]"
+          style={{ "--tile-i": 5 } as TileStyle}
+          onClick={() => goToCategory("salata")}
+        >
+          <Leaf className="w-8 h-8 text-tertiary" aria-hidden />
+          <div>
+            <span className="font-display font-black text-2xl text-on-surface group-hover:text-primary transition-[color] duration-[var(--dur-micro)]">
+              Saláta
+            </span>
+            <p className="font-mono text-[0.625rem] uppercase tracking-[0.15em] text-on-surface-variant mt-1">
+              3 féle →
+            </p>
+          </div>
+        </button>
+
+        {/* ── Italok category tile ── */}
+        <button
+          className="bento-italok tile-reveal text-left bg-surface-container rounded-[var(--radius-tile)] p-5 sm:p-6 flex flex-col justify-between group hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary transition-transform duration-[var(--dur-short)]"
+          style={{ "--tile-i": 6 } as TileStyle}
+          onClick={() => goToCategory("italok")}
+        >
+          <Wine className="w-8 h-8 text-on-surface-variant" aria-hidden />
+          <div>
+            <span className="font-display font-black text-2xl text-on-surface group-hover:text-primary transition-[color] duration-[var(--dur-micro)]">
+              Italok
+            </span>
+            <p className="font-mono text-[0.625rem] uppercase tracking-[0.15em] text-on-surface-variant mt-1">
+              Sör · Bor · Kávé →
+            </p>
+          </div>
+        </button>
+
         {/* ── Popular item tiles ── */}
         {POPULAR_ITEMS.map((item, idx) => {
           const areaClass = idx === 0 ? "bento-pop1" : idx === 1 ? "bento-pop2" : "bento-pop3";
@@ -555,7 +589,7 @@ const LandingView = ({ setActiveTab, setActiveCategory, setMenuMode }: LandingVi
             <button
               key={item.id}
               className={`${areaClass} tile-reveal text-left bg-surface overflow-hidden rounded-[var(--radius-tile)] flex flex-col group hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary transition-transform duration-[var(--dur-short)] border border-surface-dim`}
-              style={{ "--tile-i": 5 + idx } as TileStyle}
+              style={{ "--tile-i": 7 + idx } as TileStyle}
               onClick={() => goToCategory(category)}
             >
               <div className="h-36 overflow-hidden shrink-0">
@@ -581,7 +615,7 @@ const LandingView = ({ setActiveTab, setActiveCategory, setMenuMode }: LandingVi
         {/* ── Address tile ── */}
         <div
           className="bento-address tile-reveal bg-on-surface rounded-[var(--radius-tile)] p-5 sm:p-6 flex flex-col justify-between"
-          style={{ "--tile-i": 8 } as TileStyle}
+          style={{ "--tile-i": 10 } as TileStyle}
         >
           <MapPin className="w-7 h-7 text-surface opacity-50" aria-hidden />
           <div>

@@ -122,6 +122,7 @@
   grid-template-areas:
     "headline headline  photo   cta"
     "pizza    teszta    photo   cta"
+    "salata   italok    photo   cta"
     "pop1     pop2      pop3    address";
 }
 
@@ -130,6 +131,8 @@
 .bento-cta      { grid-area: cta;      }
 .bento-pizza    { grid-area: pizza;    }
 .bento-teszta   { grid-area: teszta;   }
+.bento-salata   { grid-area: salata;   }
+.bento-italok   { grid-area: italok;   }
 .bento-pop1     { grid-area: pop1;     }
 .bento-pop2     { grid-area: pop2;     }
 .bento-pop3     { grid-area: pop3;     }
@@ -142,6 +145,7 @@
       "headline  headline"
       "cta       photo"
       "pizza     teszta"
+      "salata    italok"
       "pop1      pop2"
       "pop3      address";
   }
@@ -156,6 +160,8 @@
       "photo"
       "pizza"
       "teszta"
+      "salata"
+      "italok"
       "pop1"
       "pop2"
       "pop3"
