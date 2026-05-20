@@ -1,0 +1,226 @@
+/* Hallmark · genre: playful · macrostructure: Bento Grid · theme: brand-palette (light / bold-display / warm-rust)
+ * nav: N7 Brutal slab · footer: Ft8 Marquee scroll · enrichment: photographic tile (Tier-B)
+ * pre-emit critique: P4 H4 E4 S4 R4 V5
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@300..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans:    "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", sans-serif;
+  --font-mono:    "Space Grotesk", monospace;
+
+  /* OKLCH colour system — all colour values go through tokens */
+  --color-surface:                oklch(98%   0.015  85);
+  --color-surface-dim:            oklch(87%   0.012  80);
+  --color-surface-container:      oklch(94%   0.013  85);
+  --color-surface-container-high: oklch(91%   0.013  85);
+  --color-on-surface:             oklch(12%   0.01   87);
+  --color-on-surface-variant:     oklch(37%   0.05   30);
+
+  --color-primary:                oklch(42%   0.175  30);
+  --color-on-primary:             oklch(100%  0      0);
+  --color-primary-container:      oklch(52%   0.2    30);
+
+  --color-secondary:              oklch(42%   0.10   65);
+  --color-secondary-container:    oklch(78%   0.17   70);
+
+  --color-tertiary:               oklch(42%   0.10  135);
+  --color-tertiary-container:     oklch(52%   0.14  135);
+
+  --color-focus:                  oklch(52%   0.2    30);
+
+  /* Spacing — 4pt scale */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs:  0.75rem;
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  2rem;
+  --space-xl:  3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: 7rem;
+
+  /* Radius */
+  --radius-sm:   0.25rem;
+  --radius-md:   0.75rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.5rem;
+  --radius-tile: 0.875rem;
+
+  /* Motion tokens */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro:   120ms;
+  --dur-short:   220ms;
+  --dur-long:    420ms;
+}
+
+@layer base {
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  body {
+    @apply bg-surface text-on-surface antialiased font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight leading-none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .tilted {
+    transform: rotate(-1.5deg);
+  }
+
+  .solid-shadow {
+    box-shadow: 4px 4px 0 0 color-mix(in oklch, var(--color-primary) 20%, transparent);
+  }
+
+  .solid-shadow-dark {
+    box-shadow: 4px 4px 0 0 color-mix(in oklch, var(--color-on-surface) 25%, transparent);
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .torn-edge-top {
+    mask-image: url("data:image/svg+xml,%3Csvg width='100' height='10' viewBox='0 0 100 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10V5C10 0 20 8 30 5C40 2 50 10 60 5C70 0 80 8 90 5C95 3 100 5 100 5V10H0Z' fill='black'/%3E%3C/svg%3E");
+    mask-size: 100% 20px;
+    mask-repeat: repeat-x;
+    mask-position: top;
+  }
+
+  .torn-edge-bottom {
+    mask-image: url("data:image/svg+xml,%3Csvg width='100' height='10' viewBox='0 0 100 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0V5C10 10 20 2 30 5C40 8 50 0 60 5C70 10 80 2 90 5C95 7 100 5 100 5V0H0Z' fill='black'/%3E%3C/svg%3E");
+    mask-size: 100% 20px;
+    mask-repeat: repeat-x;
+    mask-position: bottom;
+  }
+}
+
+/* ── Bento Grid layout ─────────────────────────────────────────────────────── */
+.bento-grid {
+  display: grid;
+  gap: 0.625rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "headline headline  photo   cta"
+    "pizza    teszta    photo   cta"
+    "pop1     pop2      pop3    address";
+}
+
+.bento-headline { grid-area: headline; }
+.bento-photo    { grid-area: photo;    }
+.bento-cta      { grid-area: cta;      }
+.bento-pizza    { grid-area: pizza;    }
+.bento-teszta   { grid-area: teszta;   }
+.bento-pop1     { grid-area: pop1;     }
+.bento-pop2     { grid-area: pop2;     }
+.bento-pop3     { grid-area: pop3;     }
+.bento-address  { grid-area: address;  }
+
+@media (max-width: 1023px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "headline  headline"
+      "cta       photo"
+      "pizza     teszta"
+      "pop1      pop2"
+      "pop3      address";
+  }
+}
+
+@media (max-width: 639px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "headline"
+      "cta"
+      "photo"
+      "pizza"
+      "teszta"
+      "pop1"
+      "pop2"
+      "pop3"
+      "address";
+  }
+}
+
+/* Ensure photo + CTA tiles have enough height to feel substantial */
+.bento-photo,
+.bento-cta {
+  min-height: 240px;
+}
+
+@media (min-width: 1024px) {
+  .bento-photo,
+  .bento-cta {
+    min-height: 460px;
+  }
+}
+
+/* ── Tile reveal ───────────────────────────────────────────────────────────── */
+@keyframes tile-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.tile-reveal {
+  animation: tile-reveal var(--dur-long) var(--ease-out) both;
+  animation-delay: calc(var(--tile-i, 0) * 55ms);
+}
+
+/* ── Marquee ───────────────────────────────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+
+/* ── Reduced motion ────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .tile-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .marquee-track {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 150ms !important;
+    transition-duration: 150ms !important;
+  }
+}
