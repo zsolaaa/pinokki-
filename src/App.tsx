@@ -458,7 +458,7 @@ const ItemModal = ({ item, onClose }: { item: PopularItem; onClose: () => void }
           <img
             src={item.image}
             alt={item.name}
-            className="w-full h-72 object-cover"
+            className="w-full object-contain"
           />
           <button
             onClick={onClose}
