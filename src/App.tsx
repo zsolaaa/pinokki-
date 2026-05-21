@@ -700,6 +700,12 @@ export default function App() {
   const [activeTab, setActiveTab]           = useState("Kezdőlap");
   const [menuMode, setMenuMode]             = useState<"full" | "category">("full");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showAnnouncement, setShowAnnouncement] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowAnnouncement(true), 400);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -854,6 +860,42 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* ── Announcement popup ── */}
+      <AnimatePresence>
+        {showAnnouncement && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+            onClick={() => setShowAnnouncement(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.93, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.93, y: 20 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="relative max-w-lg w-full rounded-[28px] overflow-hidden solid-shadow-dark"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}images/punkosd.png`}
+                alt="Pünkösdi ajánlat"
+                className="w-full object-contain"
+              />
+              <button
+                onClick={() => setShowAnnouncement(false)}
+                className="absolute top-4 right-4 w-10 h-10 bg-black/60 text-white rounded-full flex items-center justify-center hover:bg-black/80 transition-colors duration-[var(--dur-micro)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+                aria-label="Bezárás"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </div>
   );
