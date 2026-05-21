@@ -137,21 +137,21 @@ const POPULAR_ITEMS = [
   {
     id: 1,
     name: "Capricciosa",
-    description: "Házi paradicsomszósz, bivalymozzarella, friss bazsalikom, extra szűz olívaolaj.",
+    description: "Paradicsomszósz, mozzarella, articsóka, olasz főtt sonka, fekete olívabogyó.",
     price: "3 590 Ft",
     image: `${import.meta.env.BASE_URL}images/pizza1.png`,
   },
   {
     id: 2,
     name: "Salame Piccante",
-    description: "Tejfölös alap, dupla bacon, mozzarella, cheddar, lilahagyma.",
+    description: "Paradicsomszósz, mozzarella, olasz csípős szalámi.",
     price: "3 090 Ft",
     image: `${import.meta.env.BASE_URL}images/pizza2.png`,
   },
   {
     id: 3,
     name: "Tonno e Cipolla",
-    description: "Penne tészta, házi bazsalikomos pesto, fenyőmag, parmezán forgács.",
+    description: "Paradicsomszósz, mozzarella, lilahagyma, tonhal, olívaolaj.",
     price: "3 290 Ft",
     image: `${import.meta.env.BASE_URL}images/pizza3.png`,
   },
@@ -427,6 +427,61 @@ const AboutView = () => (
   </motion.div>
 );
 
+// ─── Popular item modal ───────────────────────────────────────────────────────
+interface PopularItem {
+  id: number;
+  name: string;
+  description: string;
+  price: string;
+  image: string;
+}
+
+const ItemModal = ({ item, onClose }: { item: PopularItem; onClose: () => void }) => (
+  <AnimatePresence>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 16 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 16 }}
+        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+        className="bg-surface rounded-[32px] overflow-hidden max-w-lg w-full solid-shadow-dark"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="relative">
+          <img
+            src={item.image}
+            alt={item.name}
+            className="w-full h-72 object-cover"
+          />
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 w-10 h-10 bg-on-surface/80 text-surface rounded-full flex items-center justify-center hover:bg-on-surface transition-colors duration-[var(--dur-micro)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+            aria-label="Bezárás"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+        <div className="p-8">
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <h3 className="font-display font-black text-3xl italic tracking-tight">{item.name}</h3>
+            <span className="font-mono font-bold text-xl text-primary tabular-nums whitespace-nowrap bg-primary/8 px-4 py-2 rounded-xl border border-primary/15 shrink-0">
+              {item.price}
+            </span>
+          </div>
+          <p className="text-on-surface-variant font-medium text-base leading-relaxed">{item.description}</p>
+        </div>
+      </motion.div>
+    </motion.div>
+  </AnimatePresence>
+);
+
 // ─── Landing view — Bento Grid macrostructure ─────────────────────────────────
 interface LandingViewProps {
   setActiveTab: (t: string) => void;
@@ -435,6 +490,8 @@ interface LandingViewProps {
 }
 
 const LandingView = ({ setActiveTab, setActiveCategory, setMenuMode }: LandingViewProps) => {
+  const [selectedItem, setSelectedItem] = useState<PopularItem | null>(null);
+
   const goToCategory = (id: string) => {
     setActiveCategory(id);
     setMenuMode("category");
@@ -584,13 +641,12 @@ const LandingView = ({ setActiveTab, setActiveCategory, setMenuMode }: LandingVi
         {/* ── Popular item tiles ── */}
         {POPULAR_ITEMS.map((item, idx) => {
           const areaClass = idx === 0 ? "bento-pop1" : idx === 1 ? "bento-pop2" : "bento-pop3";
-          const category  = idx === 2 ? "teszta" : "pizza";
           return (
             <button
               key={item.id}
               className={`${areaClass} tile-reveal text-left bg-surface overflow-hidden rounded-[var(--radius-tile)] flex flex-col group hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary transition-transform duration-[var(--dur-short)] border border-surface-dim`}
               style={{ "--tile-i": 7 + idx } as TileStyle}
-              onClick={() => goToCategory(category)}
+              onClick={() => setSelectedItem(item)}
             >
               <div className="h-36 overflow-hidden shrink-0">
                 <img
@@ -629,6 +685,11 @@ const LandingView = ({ setActiveTab, setActiveCategory, setMenuMode }: LandingVi
         </div>
 
       </div>
+
+      {/* ── Item modal ── */}
+      {selectedItem && (
+        <ItemModal item={selectedItem} onClose={() => setSelectedItem(null)} />
+      )}
     </section>
   );
 };
